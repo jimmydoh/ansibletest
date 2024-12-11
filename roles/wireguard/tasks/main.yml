@@ -3,3 +3,4 @@
     pkg:
     - wireguard
     - wireguard-tools
+    state: absent
