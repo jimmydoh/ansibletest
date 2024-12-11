@@ -1,0 +1,5 @@
+- name: Install wireguard and wireguard-tools
+  ansible.builtin.apt:
+    pkg:
+    - wireguard
+    - wireguard-tools
