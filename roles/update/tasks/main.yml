@@ -6,6 +6,11 @@
   ansible.builtin.apt:
     name: "*"
     state: latest
+  register: upgrade_result
+
+- name: Upgrade result
+  debug:
+    msg: "{{ upgrade_result.stdout_lines }}"
 
 - name: Upgrade the OS (apt-get dist-upgrade)
   ansible.builtin.apt:
@@ -14,3 +19,4 @@
 - name: Remove useless packages from the cache
   ansible.builtin.apt:
     autoclean: yes
+    autoremove: yes
