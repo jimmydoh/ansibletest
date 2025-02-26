@@ -6,6 +6,7 @@
   ansible.builtin.apt:
     name: "*"
     state: latest
+    clean: yes
   register: upgrade_result
 
 - name: Upgrade result
@@ -19,7 +20,3 @@
 - name: Remove dependencies that are no longer required
   ansible.builtin.apt:
     autoremove: yes
-
-- name: Run the equivalent of "apt-get clean" as a separate step
-  ansible.builtin.apt:
-    clean: yes
