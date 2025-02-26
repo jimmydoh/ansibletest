@@ -1,3 +1,4 @@
 ---
 # file: group_vars/all
+ansible_python_interpreter: auto_silent
 target: www.google.com.au
