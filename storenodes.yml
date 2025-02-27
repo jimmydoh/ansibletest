@@ -5,7 +5,6 @@
     become: yes
     tags:
       - init
-      - update
   - role: docker
     become: yes
     tags:
