@@ -31,6 +31,8 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
     state: present
 
 - name: Ensure Docker service is running
@@ -44,17 +46,6 @@
     name: "localadmin"
     groups: docker
     append: yes
-
-- name: Install Python pip
-  ansible.builtin.apt:
-    name: python3-pip
-    state: present
-
-- name: Install Docker Compose using pip
-  ansible.builtin.pip:
-    name: docker-compose
-    state: present
-    executable: pip3
 
 - name: Create project directory
   ansible.builtin.file:
