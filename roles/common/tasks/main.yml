@@ -1,0 +1,30 @@
+---
+# file: roles/common/tasks/main.yml
+
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: yes
+  tags: update
+
+- name: Upgrade all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+    clean: yes
+  register: upgrade_result
+  tags: update
+
+- name: Upgrade result
+  debug:
+    msg: "{{ upgrade_result.stdout_lines }}"
+  tags: update
+
+- name: Upgrade the OS (apt-get dist-upgrade)
+  ansible.builtin.apt:
+    upgrade: dist
+  tags: update
+
+- name: Remove dependencies that are no longer required
+  ansible.builtin.apt:
+    autoremove: yes
+  tags: update
