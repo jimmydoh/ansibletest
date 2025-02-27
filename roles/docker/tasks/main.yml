@@ -69,6 +69,11 @@
   ansible.builtin.debug:
     msg: "{{ compose_result }}"
 
+- name: Make sure container is removed
+  community.docker.docker_container:
+    name: hello-world-test
+    state: absent
+
 - name: Cleanup docker hello-world image
   community.docker.docker_image_remove:
     name: hello-world
