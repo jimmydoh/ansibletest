@@ -68,3 +68,12 @@
 - name: Show compose deployment result
   ansible.builtin.debug:
     msg: "{{ compose_result }}"
+
+- name: Cleanup docker hello-world image
+  community.docker.docker_image_remove:
+    name: hello-world
+
+- name: Cleanup test project
+  ansible.builtin.file:
+    state: absent
+    path: /opt/test-hello-world
