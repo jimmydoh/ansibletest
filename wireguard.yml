@@ -1,4 +1,4 @@
-- hosts: ansibletest
+- hosts: all
   become: true
   roles:
   - wireguard
