@@ -2,3 +2,4 @@ name: hello-world-test
 services:
     hello-world:
         image: hello-world
+        container_name: hello-world-test
