@@ -3,3 +3,7 @@
   roles:
   - role: common
     become: yes
+  - role: docker
+    become: yes
+    tags:
+      - init
