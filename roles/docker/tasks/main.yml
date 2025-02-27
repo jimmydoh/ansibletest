@@ -55,3 +55,25 @@
     name: docker-compose
     state: present
     executable: pip3
+
+- name: Create project directory
+  ansible.builtin.file:
+    path: /opt/test-hello-world
+    state: directory
+    mode: '0755'
+
+- name: Download docker-compose.yml from GitHub
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/jimmydoh/ansibletest/main/roles/docker/files/hello-docker-compose.yml
+    dest: /opt/test-hello-world/docker-compose.yml
+    mode: '0644'
+
+- name: Deploy Docker Compose stack
+  community.docker.docker_compose:
+    project_src: /opt/test-hello-world
+    state: present
+  register: compose_result
+
+- name: Show compose deployment result
+  ansible.builtin.debug:
+    msg: "{{ compose_result }}"
