@@ -5,3 +5,4 @@ pilot:
 storenodes:
   hosts:
     10.0.10.175:
+    10.0.10.177:
