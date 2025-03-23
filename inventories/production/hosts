@@ -1,12 +1,5 @@
-newhosts:
-  hosts:
-    jadtest02:
-
 storenodes:
   hosts:
     jadtest01:
       ansible_host: 10.0.10.175
-      ansible_user: localadmin
-    jadtest02:
-      ansible_host: 10.0.10.177
       ansible_user: localadmin
