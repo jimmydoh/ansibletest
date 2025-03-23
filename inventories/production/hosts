@@ -1,8 +1,17 @@
 pilot:
   hosts:
-    10.0.10.175:
+    jadtest01:
+      ansible_host: 10.0.10.175
+      ansible_user: localadmin
+      ansible_ssh_extra_args: "-o StrictHostKeyChecking=no"
 
 storenodes:
   hosts:
-    10.0.10.175:
-    10.0.10.177:
+    jadtest01:
+      ansible_host: 10.0.10.175
+      ansible_user: localadmin
+      ansible_ssh_extra_args: "-o StrictHostKeyChecking=no"
+    jadtest02:
+      ansible_host: 10.0.10.177
+      ansible_user: localadmin
+      ansible_ssh_extra_args: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
