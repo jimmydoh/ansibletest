@@ -1,40 +1,30 @@
 ---
 # file: roles/common/tasks/main.yml
 
-- name: Update package cache
-  ansible.builtin.apt:
-    update_cache: yes
+- name: Update and Upgrade
   tags: 
     - init
     - update
-
-- name: Upgrade all packages to their latest version
-  ansible.builtin.apt:
-    name: "*"
-    state: latest
-    clean: yes
-  register: upgrade_result
-  tags: 
-    - init
-    - update
-
-- name: Upgrade result
-  debug:
-    msg: "{{ upgrade_result.stdout_lines }}"
-  tags: 
-    - init
-    - update
-
-- name: Upgrade the OS (apt-get dist-upgrade)
-  ansible.builtin.apt:
-    upgrade: dist
-  tags: 
-    - init
-    - update
-
-- name: Remove dependencies that are no longer required
-  ansible.builtin.apt:
-    autoremove: yes
-  tags: 
-    - init
-    - update
+  block:    
+  - name: Update package cache
+    ansible.builtin.apt:
+      update_cache: yes  
+  
+  - name: Upgrade all packages to their latest version
+    ansible.builtin.apt:
+      name: "*"
+      state: latest
+      clean: yes
+    register: upgrade_result
+  
+  - name: Upgrade result
+    debug:
+      msg: "{{ upgrade_result.stdout_lines }}"
+  
+  - name: Upgrade the OS (apt-get dist-upgrade)
+    ansible.builtin.apt:
+      upgrade: dist
+  
+  - name: Remove dependencies that are no longer required
+    ansible.builtin.apt:
+      autoremove: yes
