@@ -1,5 +1,5 @@
 - name: Store Nodes Playbooks
-  hosts: storenodes
+  hosts: all
   roles:
   - role: common
     become: yes
