@@ -13,6 +13,7 @@
       - curl
       - gnupg
       - lsb-release
+      - python3-debian
     state: present
 
 #- name: Add Docker GPG key
