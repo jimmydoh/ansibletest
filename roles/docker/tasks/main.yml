@@ -15,15 +15,26 @@
       - lsb-release
     state: present
 
-- name: Add Docker GPG key
-  ansible.builtin.apt_key:
-    url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
-    state: present
+#- name: Add Docker GPG key
+#  ansible.builtin.apt_key:
+#    url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
+#    state: present
 
-- name: Add Docker repository
-  ansible.builtin.apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+#- name: Add Docker repository
+#  ansible.builtin.apt_repository:
+#    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+#    state: present
+
+- name: Add Docker Module Repository
+  ansible.builtin.deb822_repository:
+    name: docker
+    types: [deb]
+    uris: "https://download.docker.com/linux/{{ ansible_distribution | lower }}"
+    signed_by: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    suites: ["{{ ansible_distribution_release | lower }}"]
+    components: [stable]
     state: present
+    enabled: yes
 
 - name: Install Docker
   ansible.builtin.apt:
