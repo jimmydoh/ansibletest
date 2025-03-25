@@ -2,3 +2,5 @@ ungrouped:
   hosts:
     jadtest02:
       ansible_host: 10.0.10.177
+    jadpi01:
+      ansible_host: 10.1.10.141
