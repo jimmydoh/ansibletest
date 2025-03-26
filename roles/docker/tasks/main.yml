@@ -1,6 +1,10 @@
 ---
 # file: roles/docker/tasks/main.yml
 
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_facts
+
 - name: Update apt package cache
   ansible.builtin.apt:
     update_cache: yes
