@@ -4,3 +4,5 @@ ungrouped:
       ansible_host: 10.0.10.177
     jadpi01:
       ansible_host: 10.1.10.141
+    jadcon02:
+      ansible_host: 10.0.10.178
